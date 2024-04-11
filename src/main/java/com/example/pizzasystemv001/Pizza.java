@@ -1,17 +1,62 @@
 package com.example.pizzasystemv001;
 
+import java.util.List;
+
 public class Pizza {
     private int size;
     private int type;
     private double price;
+    private int quantity;
+    private List<String> toppings;
+    private int crust;
+
+
 
     public Pizza() {
     }
 
-    public Pizza(int size, int type, double price) {
+    public Pizza(int size, int type, double price, int quantity, int crust, List<String> toppings) {
         this.size = size;
         this.type = type;
         this.price = price;
+        this.quantity = quantity;
+        this.toppings = toppings;
+        this.crust = crust;
+    }
+
+    public String getToppings() {
+        StringBuilder sb = new StringBuilder();
+        for (String topping : toppings) {
+            sb.append(topping).append(", ");
+        }
+        return sb.toString();
+    }
+
+    public void setToppings(List<String> toppings) {
+        this.toppings = toppings;
+    }
+    public String getCrust() {
+        if(this.crust == 0){
+            return "Thin Crust";
+        } else if (this.crust == 1) {
+            return "Stuffed Crust";
+        } else if (this.crust == 2) {
+            return "Regular Crust";
+        } else {
+            return "Error Please Choose a Crust";
+        }
+    }
+
+    public void setCrust(int crust) {
+        this.crust = crust;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getType() {

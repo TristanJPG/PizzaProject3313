@@ -8,21 +8,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pizzasystemv001.SceneController">
    <children>
-      <Label layoutX="147.0" layoutY="32.0" text="This is the menu">
+      <Label layoutX="147.0" layoutY="32.0">
          <font>
             <Font size="45.0" />
          </font>
       </Label>
-      <Button layoutX="532.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchToIntro" prefHeight="56.0" prefWidth="60.0" text="Switch to Intro" wrapText="true">
+      <Button layoutX="554.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchToIntro" prefHeight="46.0" prefWidth="49.0" text="Next" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <ImageView fitHeight="100.0" fitWidth="106.0" layoutX="14.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="106.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/3132693.png" />
          </image></ImageView>
-      <VBox layoutX="128.0" layoutY="88.0" prefHeight="142.0" prefWidth="100.0" spacing="10.0">
+      <VBox layoutX="130.0" layoutY="14.0" prefHeight="142.0" prefWidth="100.0" spacing="10.0">
          <children>
             <Label text="Type of Pizza" />
             <RadioButton fx:id="rbVegan" mnemonicParsing="false" onAction="#handleRBSelction" text="Vegan">
@@ -36,7 +36,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox layoutX="228.0" layoutY="88.0" prefHeight="142.0" prefWidth="100.0" spacing="9.0">
+      <VBox layoutX="230.0" layoutY="17.0" prefHeight="70.0" prefWidth="100.0" spacing="9.0">
          <children>
             <Label text="Size" />
             <ChoiceBox fx:id="cbSizes" prefWidth="150.0" />
@@ -45,7 +45,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox layoutX="328.0" layoutY="94.0" prefHeight="142.0" prefWidth="100.0" spacing="3.0">
+      <VBox layoutX="330.0" layoutY="23.0" prefHeight="88.0" prefWidth="83.0" spacing="3.0">
          <children>
             <Label text="Quantity" />
             <TextField fx:id="tfQuantity" />
@@ -54,7 +54,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <HBox layoutX="428.0" layoutY="114.0" prefHeight="34.0" prefWidth="123.0" spacing="4.0">
+      <HBox layoutX="420.0" layoutY="354.0" prefHeight="34.0" prefWidth="123.0" spacing="4.0">
          <children>
             <Button fx:id="btnOrder" mnemonicParsing="false" onAction="#handleOrderBtn" text="Order" />
             <Button fx:id="btnReset" mnemonicParsing="false" onAction="#handleResetBtn" text="Reset" />
@@ -63,11 +63,41 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-      <VBox layoutX="32.0" layoutY="222.0" prefHeight="164.0" prefWidth="395.0">
+      <VBox layoutX="9.0" layoutY="286.0" prefHeight="100.0" prefWidth="418.0">
          <children>
-            <TextArea fx:id="taSummary" editable="false" prefHeight="164.0" prefWidth="394.0" wrapText="true" />
+            <TextArea fx:id="taSummary" editable="false" prefHeight="162.0" prefWidth="386.0" wrapText="true" />
          </children>
       </VBox>
-      <Label fx:id="lblPricePizza" layoutX="438.0" layoutY="165.0" text="Price of Pizza" />
+      <Label fx:id="lblPricePizza" layoutX="445.0" layoutY="52.0" text="Price of Pizza" />
+      <VBox layoutX="420.0" layoutY="87.0" prefHeight="195.0" prefWidth="141.0" spacing="2.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="119.0" text="    Toppings (max 4)" textAlignment="CENTER" wrapText="true" />
+            <CheckBox fx:id="cbPepperoni" mnemonicParsing="false" onAction="#handleToppings" text="Pepperoni" />
+            <CheckBox fx:id="cbHam" mnemonicParsing="false" onAction="#handleToppings" text="Ham" />
+            <CheckBox fx:id="cbBacon" mnemonicParsing="false" onAction="#handleToppings" prefHeight="19.0" prefWidth="67.0" text="Bacon" />
+            <CheckBox fx:id="cbSausage" mnemonicParsing="false" onAction="#handleToppings" text="Sausage" />
+            <CheckBox fx:id="cbGreenPepper" mnemonicParsing="false" onAction="#handleToppings" prefHeight="18.0" prefWidth="184.0" text="Green Pepper" />
+            <CheckBox fx:id="cbMushroom" mnemonicParsing="false" onAction="#handleToppings" text="Mushroom" />
+            <CheckBox fx:id="cbSpinach" mnemonicParsing="false" onAction="#handleToppings" text="Spinach" />
+            <CheckBox fx:id="cbPineapple" mnemonicParsing="false" onAction="#handleToppings" text="Pineapple" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="218.0" layoutY="135.0" prefHeight="108.0" prefWidth="123.0" spacing="4.0">
+         <children>
+            <Label text="Crust Options" />
+            <RadioButton fx:id="rbStuffCrust" mnemonicParsing="false" text="Stuff Crust">
+               <toggleGroup>
+                  <ToggleGroup fx:id="rbCrust" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="rbThinCrust" mnemonicParsing="false" text="Thin Crust" toggleGroup="$rbCrust" />
+            <RadioButton fx:id="rbRegularCrust" mnemonicParsing="false" selected="true" text="Regular Crust" toggleGroup="$rbCrust" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
    </children>
 </AnchorPane>
