@@ -120,10 +120,10 @@ public void handleToppings(ActionEvent event){
                 selectedToppings.add(topping.getText());
             }
         }
-        if(rbThinCrust.isSelected()){
+        if(rbStuffCrust.isSelected()){
             crust = 0;
         }
-        if (rbStuffCrust.isSelected()){
+        if (rbThinCrust.isSelected()){
             crust = 1;
         }
         else if (rbRegularCrust.isSelected()){
@@ -131,16 +131,16 @@ public void handleToppings(ActionEvent event){
         }
         pizza.setQuantity(Integer.parseInt(tfQuantity.getText()));
         if (rbVegan.isSelected()) {
-            handlePizzaOrder(pizza, 0, 3.59, selectedToppings, crust);
+            handlePizzaOrder(pizza, 0, selectedToppings, crust);
         }
         if (rbMeatLovers.isSelected()) {
-            handlePizzaOrder(pizza, 1, 7.59, selectedToppings, crust);
+            handlePizzaOrder(pizza, 1, selectedToppings, crust);
         }
         if (rbHawaiian.isSelected()) {
-            handlePizzaOrder(pizza, 2, 5.59, selectedToppings, crust);
+            handlePizzaOrder(pizza, 2, selectedToppings, crust);
         }
     }
-    private void handlePizzaOrder(Pizza pizza, int type, double price, List<String> toppings, int crust) {
+    private void handlePizzaOrder(Pizza pizza, int type,List<String> toppings, int crust) {
         pizza.setType(type);
         pizza.setSize(this.cbSizes.getSelectionModel().getSelectedIndex());
         pizza.setToppings(toppings);
@@ -154,7 +154,13 @@ public void handleToppings(ActionEvent event){
         rbHawaiian.setSelected(false);
         tfQuantity.setText(null);
         cbSizes.setValue(null);
-        lblPricePizza.setText("Pizzas Price per:");
+        for (CheckBox topping : toppings) {
+            topping.setSelected(false);
+        }
+        rbRegularCrust.setSelected(false);
+        rbStuffCrust.setSelected(false);
+        rbThinCrust.setSelected(false);
+        lblPricePizza.setText("Price: $0.00");
     }
     public void switchToIntro(ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Pizza-Intro.fxml"));
@@ -184,7 +190,7 @@ public void handleToppings(ActionEvent event){
             price += 4.99;
         }
         if(cbSizes.getSelectionModel().getSelectedIndex() == 3){
-            price += 1.50;
+            price -= 2.50;
         }
         if(rbVegan.isSelected()){
             price += 5.59;
@@ -228,8 +234,13 @@ public void handleToppings(ActionEvent event){
         if(cbPineapple.isSelected()){
             price += 0.75;
         }
-        lblPricePizza.setText("$" + price);
+        if(price < 0){
+            lblPricePizza.setText("Price: $0.00");
 
+        }
+        else {
+            lblPricePizza.setText("Price: $" + price);
+        }
     }
 
 }

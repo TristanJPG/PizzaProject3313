@@ -40,9 +40,9 @@ public class Pizza {
     }
     public String getCrust() {
         if(this.crust == 0){
-            return "Thin Crust";
-        } else if (this.crust == 1) {
             return "Stuffed Crust";
+        } else if (this.crust == 1) {
+            return "Thin Crust";
         } else if (this.crust == 2) {
             return "Regular Crust";
         } else {
