@@ -31,6 +31,9 @@ public class Pizza {
         }
         return sb.toString();
     }
+    public List<String> getToppingsList() {
+        return toppings;
+    }
 
     public void setToppings(List<String> toppings) {
         this.toppings = toppings;
@@ -59,7 +62,7 @@ public class Pizza {
         this.quantity = quantity;
     }
 
-    public String getType() {
+    public String getType()  {
         if(this.type == 0){
             return "Vegan";
         }
@@ -75,14 +78,6 @@ public class Pizza {
 
     public void setType(int type) {
         this.type = type;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public String getSize(){
@@ -101,6 +96,11 @@ public class Pizza {
     }
     public void setSize(int size){
         this.size = size;
+    }
+
+    public double getPrice(){
+       Price price = new Price();
+         return price.calculatePrice(this);
     }
 
 }
