@@ -100,7 +100,7 @@ public class Pizza {
 
     public double getPrice(){
        Price price = new Price();
-         return price.calculatePrice(this);
+         return price.calculatePizzaPrice(this);
     }
 
 }

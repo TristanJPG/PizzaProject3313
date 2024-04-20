@@ -15,9 +15,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
+import java.util.Objects;
 
-public class SceneController {
+public class PizzaController {
     private Stage stage;
     private Scene scene;
     private FXMLLoader fxmlLoader;
@@ -39,6 +39,7 @@ public class SceneController {
     private Button btnReset;
     @FXML
     private TextArea taSummary;
+    private String sharedText;
     @FXML
     private Label lblPricePizza;
     @FXML
@@ -64,9 +65,16 @@ public class SceneController {
     private RadioButton rbStuffCrust;
     @FXML
     private RadioButton rbRegularCrust;
+    SharedData sharedData = SharedData.getInstance();
 
 
 
+
+
+/*
+thia is the initialize method that sets the default value of the choice box to small, and adds a listener
+to the choice box that will update the price of the pizza based on the size selected.
+ */
 
     @FXML
     public void initialize() {
@@ -77,6 +85,10 @@ public class SceneController {
             // You can use this value to update the lblPricePizza label
             handleChangePrice(null);
         });
+
+        if(!Objects.equals(sharedData.getSharedText(), "")){
+            taSummary.setText(sharedData.getSharedText());
+        }
     }
 
 @FXML
@@ -97,19 +109,6 @@ public void handleToppings(ActionEvent event){
     toppings.forEach(topping -> topping.selectedProperty().addListener(changeListener));
     handleChangePrice(event);
 }
-//    @FXML
-//    public void handleRBSelection(ActionEvent event){
-//
-//        if(rbVegan.isSelected()){
-//            lblPricePizza.setText("$3.59");
-//        }
-//        if(rbHawaiian.isSelected()){
-//            lblPricePizza.setText("$5.59");
-//        }
-//        if(rbMeatLovers.isSelected()){
-//            lblPricePizza.setText("$7.59");
-//        }
-//    }
     @FXML
     public void handleOrderBtn(ActionEvent event){
         int crust = -1;
@@ -146,6 +145,8 @@ public void handleToppings(ActionEvent event){
         pizza.setToppings(toppings);
         pizza.setCrust(crust);
         taSummary.appendText("(" + pizza.getQuantity() +" "+  pizza.getSize() + " " + pizza.getType() +" "+ pizza.getCrust() + " Pizza with " + pizza.getToppings() + (pizza.getPrice() * pizza.getQuantity()) + ")\n");
+
+        sharedData.setSharedText(taSummary.getText());
     }
     @FXML
     public void handleResetBtn(ActionEvent event){
@@ -163,8 +164,8 @@ public void handleToppings(ActionEvent event){
         lblPricePizza.setText("Price: $0.00");
     }
     public void switchToIntro(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Pizza-Intro.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Drinks-Menu.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
@@ -177,6 +178,7 @@ public void handleToppings(ActionEvent event){
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     public void handleChangePrice(ActionEvent event){
         double price = 0.0;
