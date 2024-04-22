@@ -111,12 +111,15 @@ public void handleToppings(ActionEvent event){
 }
     @FXML
     public void handleOrderBtn(ActionEvent event){
+
         int crust = -1;
         Pizza pizza = new Pizza();
         List<String> selectedToppings = new ArrayList<>();
-        for (CheckBox topping : toppings) {
-            if (topping.isSelected()) {
-                selectedToppings.add(topping.getText());
+        if (toppings != null) {
+            for (CheckBox topping : toppings) {
+                if (topping.isSelected()) {
+                    selectedToppings.add(topping.getText());
+                }
             }
         }
         if(rbStuffCrust.isSelected()){
@@ -128,7 +131,9 @@ public void handleToppings(ActionEvent event){
         else if (rbRegularCrust.isSelected()){
             crust = 2;
         }
-        pizza.setQuantity(Integer.parseInt(tfQuantity.getText()));
+        if((tfQuantity.getText() != null)) {
+            pizza.setQuantity(Integer.parseInt(tfQuantity.getText()));
+        }
         if (rbVegan.isSelected()) {
             handlePizzaOrder(pizza, 0, selectedToppings, crust);
         }
@@ -140,12 +145,13 @@ public void handleToppings(ActionEvent event){
         }
     }
     private void handlePizzaOrder(Pizza pizza, int type,List<String> toppings, int crust) {
+        Order order = new Order();
         pizza.setType(type);
         pizza.setSize(this.cbSizes.getSelectionModel().getSelectedIndex());
         pizza.setToppings(toppings);
         pizza.setCrust(crust);
         taSummary.appendText("(" + pizza.getQuantity() +" "+  pizza.getSize() + " " + pizza.getType() +" "+ pizza.getCrust() + " Pizza with " + pizza.getToppings() + (pizza.getPrice() * pizza.getQuantity()) + ")\n");
-
+        order.setPizza(pizza);
         sharedData.setSharedText(taSummary.getText());
     }
     @FXML
@@ -156,14 +162,16 @@ public void handleToppings(ActionEvent event){
         tfQuantity.setText(null);
         cbSizes.setValue(null);
         for (CheckBox topping : toppings) {
-            topping.setSelected(false);
+            if (topping.isSelected()) {
+                topping.setSelected(false);
+            }
         }
         rbRegularCrust.setSelected(false);
         rbStuffCrust.setSelected(false);
         rbThinCrust.setSelected(false);
         lblPricePizza.setText("Price: $0.00");
     }
-    public void switchToIntro(ActionEvent event) throws IOException {
+    public void switchToDrinks(ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Drinks-Menu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());

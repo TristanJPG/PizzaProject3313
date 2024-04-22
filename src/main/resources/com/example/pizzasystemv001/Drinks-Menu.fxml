@@ -8,9 +8,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pizzasystemv001.DrinksController">
    <children>
-      <ImageView blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView blendMode="MULTIPLY" fitHeight="150.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/96896076-red-cocktail-with-lemon-slices.jpg" />
+            <Image url="@../../../images/thumbs.jpg" />
          </image>
       </ImageView>
       <VBox layoutX="131.0" layoutY="14.0" prefHeight="118.0" prefWidth="135.0" spacing="2.0">
@@ -23,14 +23,14 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <RadioButton id="rbDrink" fx:id="rbRcCola" mnemonicParsing="false" text="RC Cola">
+            <RadioButton id="rbDrink" fx:id="rbRcCola" mnemonicParsing="false" onAction="#handlePriceChange" text="RC Cola">
                <toggleGroup>
                   <ToggleGroup fx:id="rbDrinks" />
                </toggleGroup></RadioButton>
-            <RadioButton id="rbDrink" fx:id="rbCola" mnemonicParsing="false" text="Coke" toggleGroup="$rbDrinks" />
-            <RadioButton id="rbDrink" fx:id="rbWater" mnemonicParsing="false" text="Water" toggleGroup="$rbDrinks" />
-            <RadioButton id="rbDrink" fx:id="rbFanta" mnemonicParsing="false" text="Fanta" toggleGroup="$rbDrinks" />
-            <RadioButton id="rbDrink" fx:id="rbSprite" mnemonicParsing="false" text="Sprite" toggleGroup="$rbDrinks" />
+            <RadioButton id="rbDrink" fx:id="rbCola" mnemonicParsing="false" onAction="#handlePriceChange" text="Coke" toggleGroup="$rbDrinks" />
+            <RadioButton id="rbDrink" fx:id="rbWater" mnemonicParsing="false" onAction="#handlePriceChange" text="Water" toggleGroup="$rbDrinks" />
+            <RadioButton id="rbDrink" fx:id="rbFanta" mnemonicParsing="false" onAction="#handlePriceChange" text="Fanta" toggleGroup="$rbDrinks" />
+            <RadioButton id="rbDrink" fx:id="rbSprite" mnemonicParsing="false" onAction="#handlePriceChange" text="Sprite" toggleGroup="$rbDrinks" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -48,13 +48,13 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <RadioButton fx:id="rbSmall" mnemonicParsing="false" text="Small">
+            <RadioButton fx:id="rbSmall" mnemonicParsing="false" onAction="#handlePriceChange" text="Small">
                <toggleGroup>
                   <ToggleGroup fx:id="rbDrinkSize" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="rbMedium" mnemonicParsing="false" text="Medium" toggleGroup="$rbDrinkSize" />
-            <RadioButton fx:id="rbLarge" mnemonicParsing="false" text="Large" toggleGroup="$rbDrinkSize" />
+            <RadioButton fx:id="rbMedium" mnemonicParsing="false" onAction="#handlePriceChange" text="Medium" toggleGroup="$rbDrinkSize" />
+            <RadioButton fx:id="rbLarge" mnemonicParsing="false" onAction="#handlePriceChange" text="Large" toggleGroup="$rbDrinkSize" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -73,9 +73,10 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <Button layoutX="530.0" layoutY="380.0" mnemonicParsing="false" text="Purchase" />
+      <Button fx:id="btnPurchase" layoutX="530.0" layoutY="380.0" mnemonicParsing="false" onAction="#switchToPurchase" text="Purchase" />
       <Button fx:id="btnOrder" layoutX="369.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleOrderBtn" text="Order" />
       <Button layoutX="367.0" layoutY="303.0" mnemonicParsing="false" text="Reset" />
       <Button fx:id="btnBackMenu" layoutX="538.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back" />
+      <Label fx:id="lblPrice" layoutX="60.0" layoutY="196.0" text="Price: $0.00" />
    </children>
 </AnchorPane>

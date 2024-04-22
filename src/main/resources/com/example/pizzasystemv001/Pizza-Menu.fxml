@@ -13,7 +13,7 @@
             <Font size="45.0" />
          </font>
       </Label>
-      <Button layoutX="554.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchToIntro" prefHeight="46.0" prefWidth="49.0" text="Next" wrapText="true">
+      <Button layoutX="554.0" layoutY="359.0" mnemonicParsing="false" onAction="#switchToDrinks" prefHeight="46.0" prefWidth="49.0" text="Next" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>

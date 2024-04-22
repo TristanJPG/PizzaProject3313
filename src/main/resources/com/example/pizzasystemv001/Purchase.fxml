@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pizzasystemv001.PurchaseController">
+   <children>
+      <VBox layoutX="24.0" layoutY="55.0" prefHeight="274.0" prefWidth="544.0">
+         <children>
+            <Label prefHeight="65.0" prefWidth="201.0" text="Purchase Confimration" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Annai MN Regular" size="19.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="175.0" right="30.0" />
+               </VBox.margin>
+            </Label>
+            <TextArea fx:id="taPurchaseSummary" editable="false" prefHeight="200.0" prefWidth="301.0" />
+         </children></VBox>
+      <Button layoutX="497.0" layoutY="329.0" mnemonicParsing="false" text="Checkout" />
+      <Label fx:id="lblTotalPrice" layoutX="266.0" layoutY="347.0" text="Total Price" />
+   </children>
+</AnchorPane>

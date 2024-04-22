@@ -41,15 +41,17 @@ public class DrinksController {
     private TextField tfDrinksQuantity;
     @FXML
     private TextArea taDrinksSummary;
+    @FXML
+    private Label lblPrice;
 
     SharedData sharedData = SharedData.getInstance();
     @FXML
     public void initialize() {
-        PizzaController pc = new PizzaController();
         this.taDrinksSummary.setText(sharedData.getSharedText());
         drinkSizes.addAll(Arrays.asList(rbSmall, rbMedium, rbLarge));
         drinkBrands.addAll(Arrays.asList(rbCola, rbSprite, rbFanta, rbWater, rbRcCola));
     }
+
 
     @FXML
     public void handleOrderBtn(ActionEvent event){
@@ -68,17 +70,47 @@ public class DrinksController {
         handleDrinkOrder(drink);
     }
     public void handleDrinkOrder(Drinks drinks){
+        Order order = new Order();
         taDrinksSummary.appendText("(" + drinks.getQuantity() +" "+ drinks.getSize() + " " +  drinks.getBrand() + "(s) " + (drinks.getPrice() * drinks.getQuantity()) + ")\n");
-
+        order.setDrink(drinks);
         sharedData.setSharedText(taDrinksSummary.getText());
-    }
 
+    }
+    @FXML
+    public void handlePriceChange(ActionEvent event){
+        double price = 0;
+       if(rbCola.isSelected()){
+           price += 1.99;
+       }  if (rbSprite.isSelected()) {
+           price += 1.99;
+       }  if (rbWater.isSelected()) {
+           price += 0.99;
+       }  if (rbRcCola.isSelected()) {
+           price += 1.49;
+       }  if (rbFanta.isSelected()) {
+           price += 1.99;
+       }
+       if(rbSmall.isSelected()){
+           price += 0.00;
+       }  if (rbMedium.isSelected()) {
+           price += 0.50;
+       }  if (rbLarge.isSelected()) {
+           price += 1.00;
+       }
+        lblPrice.setText("Price: $" + price);
+    }
     public void switchToMenu(ActionEvent event) throws IOException {
         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Pizza-Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
-
+    }
+    public void switchToPurchase(ActionEvent event) throws IOException {
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Purchase.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
     }
 }
