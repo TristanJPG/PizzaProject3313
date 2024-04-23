@@ -161,9 +161,11 @@ public void handleToppings(ActionEvent event){
         rbHawaiian.setSelected(false);
         tfQuantity.setText(null);
         cbSizes.setValue(null);
-        for (CheckBox topping : toppings) {
-            if (topping.isSelected()) {
-                topping.setSelected(false);
+        if(toppings != null) {
+            for (CheckBox topping : toppings) {
+                if (topping.isSelected()) {
+                    topping.setSelected(false);
+                }
             }
         }
         rbRegularCrust.setSelected(false);
@@ -172,7 +174,7 @@ public void handleToppings(ActionEvent event){
         lblPricePizza.setText("Price: $0.00");
     }
     public void switchToDrinks(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Drinks-Menu.fxml"));
+        fxmlLoader = new FXMLLoader(SystemController.class.getResource("Drinks-Menu.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
@@ -180,7 +182,7 @@ public void handleToppings(ActionEvent event){
     }
 
     public void switchToMenu(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Pizza-Menu.fxml"));
+        fxmlLoader = new FXMLLoader(SystemController.class.getResource("Pizza-Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);

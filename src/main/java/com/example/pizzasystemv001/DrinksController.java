@@ -1,7 +1,4 @@
 package com.example.pizzasystemv001;
-import javafx.beans.value.ChangeListener;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +10,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class DrinksController {
     private Stage stage;
@@ -100,14 +96,14 @@ public class DrinksController {
         lblPrice.setText("Price: $" + price);
     }
     public void switchToMenu(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Pizza-Menu.fxml"));
+        fxmlLoader = new FXMLLoader(SystemController.class.getResource("Pizza-Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
     }
     public void switchToPurchase(ActionEvent event) throws IOException {
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Purchase.fxml"));
+        fxmlLoader = new FXMLLoader(SystemController.class.getResource("Purchase.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
