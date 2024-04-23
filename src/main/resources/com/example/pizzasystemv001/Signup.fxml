@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="signupPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: &quot;4285f4&quot;;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.spring24swe3313pizzalogin.Signup">
+   <children>
+      <AnchorPane layoutX="297.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="290.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Sign Up" textFill="#4e4e4e">
+               <font>
+                  <Font name="Arial" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="125.0" text="Last Name:" textFill="#4285f4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="62.0" text="First Name:" textFill="#4285f4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="185.0" text="Phone Number:" textFill="#4285f4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="247.0" text="Password:" textFill="#4285f4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="userFirstName" layoutX="20.0" layoutY="89.0" prefHeight="25.0" prefWidth="250.0" />
+            <TextField fx:id="userLastName" layoutX="20.0" layoutY="153.0" prefHeight="25.0" prefWidth="250.0" />
+            <TextField fx:id="userPhoneNumber" layoutX="20.0" layoutY="212.0" prefHeight="25.0" prefWidth="250.0" />
+            <TextField fx:id="userPassword" layoutX="20.0" layoutY="275.0" prefHeight="25.0" prefWidth="250.0" />
+            <Button fx:id="userRegister" layoutX="108.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: &quot;4285f4&quot;;" text="Register" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="loadLogin" layoutX="95.0" layoutY="343.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Return to Login" textFill="#4285f4" />
+         </children></AnchorPane>
+      <Line endX="571.5" endY="67.50000762939453" startX="313.33331298828125" startY="67.50000762939453" stroke="#4e4e4e" />
+   </children>
+</AnchorPane>
